@@ -1,0 +1,51 @@
+<div class="previewMode">
+    <a routerLink="/"></a>
+    <button (click)="activatePreviewMode()">Preview Mode</button>
+</div>
+<table class="noBorder">
+    <thead>
+        <tr>
+            <th>EventId</th>
+            <th>EventName</th>
+            <th>OddsFirstTeam</th>
+            <th>OddsDraw</th>
+            <th>OddsSecondTeam</th>
+            <th>EventStartDate</th>
+            <th class="noBorder"></th>
+            <th class="noBorder"></th>
+        </tr>
+    </thead>
+    <tr *ngFor="let se of service.list">
+        <td>{{se.eventId}}</td>
+        <td>
+            <span *ngIf="!se.isItForEditing">{{se.eventName}}</span>
+            <input class="height100 width90 noBorder" type="text" [(ngModel)]="se.eventName" *ngIf="se.isItForEditing"/>
+        </td>
+        <td>
+            <span *ngIf="!se.isItForEditing">{{se.oddsForFirstTeam}}</span>
+            <input class="height100 width90 noBorder" type="text" [(ngModel)]="se.oddsForFirstTeam" *ngIf="se.isItForEditing"/>
+        </td>
+        <td>
+            <span *ngIf="!se.isItForEditing">{{se.oddsForDraw}}</span>
+            <input class="height100 width90 noBorder" type="text" [(ngModel)]="se.oddsForDraw" *ngIf="se.isItForEditing"/>
+        </td>
+        <td>
+            <span *ngIf="!se.isItForEditing">{{se.oddsForSecondTeam}}</span>
+            <input  required class="height100 width90 noBorder" type="text" [(ngModel)]="se.oddsForSecondTeam" *ngIf="se.isItForEditing"/>
+            
+        </td>
+        <td>
+            <span *ngIf="!se.isItForEditing">{{se.formatedEventStartDate}}</span>
+            <input required class="height100 width90 noBorder" type="datetime-local" [(ngModel)]="se.eventStartDate" *ngIf="se.isItForEditing"/>
+        </td>
+        <td class="noBorder">
+            <button class="width100" *ngIf="!se.isItForEditing" (click)="editEvent(se)">Edit</button>
+            <button class="width100" *ngIf="se.isItForEditing" (click)="updateRecord(se)">Save</button>
+        </td>
+        <td class="noBorder">
+            <button class="width100" *ngIf="!se.isItForEditing" (click)="onDelete(se.eventId)">Delete</button>
+            <button class="width100" *ngIf="se.isItForEditing" (click)="editEvent(se)">Cancel</button>
+        </td>
+    </tr>
+</table>
+<button class="addBtn" (click)="onInsert()">Add New</button>

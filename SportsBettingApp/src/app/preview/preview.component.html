@@ -1,0 +1,21 @@
+<div class="editMode">
+    <a [routerLink]="['/edit']"></a> <button (click)="activateEditMode()">Edit Mode</button>
+</div>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>EventName</th>
+            <th>OddsForFirstTeam</th>
+            <th>OddsForDraw</th>
+            <th>OddsForSecondTeam</th>
+            <th>EventForStartDate</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let se of service.list">
+        <td [ngClass]="{'red' : se.changeColor}">{{se.eventName}}</td>
+        <td [ngClass]="{'red' : se.changeColor}" (click)="loggingOnConsole(se.eventId, se.oddsForFirstTeam, 'oddsForFirstTeam')">{{se.oddsForFirstTeam}}</td>
+        <td [ngClass]="{'red' : se.changeColor}" (click)="loggingOnConsole(se.eventId, se.oddsForDraw, 'oddsForDraw')">{{se.oddsForDraw}}</td>
+        <td [ngClass]="{'red' : se.changeColor}" (click)="loggingOnConsole(se.eventId, se.oddsForSecondTeam, 'oddsForSecondTeam')">{{se.oddsForSecondTeam}}</td>
+        <td [ngClass]="{'red' : se.changeColor}">{{se.formatedEventStartDate}}</td>
+    </tr>
+</table>

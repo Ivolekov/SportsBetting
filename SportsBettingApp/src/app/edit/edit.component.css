@@ -1,0 +1,35 @@
+table, th, td {
+  border: 1px solid black;
+}
+table{
+    width: 100%;
+}
+td{
+  text-align: center;
+}
+input{
+  text-align: center;
+}
+.previewMode{
+  width: 100%;
+}
+.previewMode>button{
+  float:right;
+  margin-bottom: 15px;
+}
+.noBorder{
+  border: none;
+}
+.width100{
+  width: 100%;
+}
+.width90{
+  width: 90%;
+}
+.height100{
+  height:100%;
+}
+.addBtn{
+  margin-left: 1px;
+  margin-top: 15px;
+}
